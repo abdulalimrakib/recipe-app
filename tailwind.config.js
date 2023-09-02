@@ -2,7 +2,11 @@
 module.exports = {
   content: ['*'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        Ubuntu:['Ubuntu', 'sans-serif']
+      } 
+    },
     container: {
       center: true,
       DEFAULT: '1rem',
@@ -11,7 +15,6 @@ module.exports = {
       xl: '5rem',
       '2xl': '6rem',
     },
-
   },
   plugins: [],
 }
