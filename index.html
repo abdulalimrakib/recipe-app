@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="/css/tailwind.css">
 </head>
 
-<body class="bg-yellow-400">
+<body class="bg-yellow-400 font-Ubuntu">
 
-    <div
+    <div id=""
         class="bg-white text-[16px] px-[3em] py-[2.8em] w-[32em] translate-x-[-50%] left-[50%] absolute rounded-md top-8 shadow-md ">
         <div class="w-full flex gap-5">
             <div class="w-[70%]">
@@ -35,63 +38,7 @@
 
 
     <!-- script -->
-    <script>
-
-        let result = document.getElementById("result");
-        let userInput = document.getElementById("userInput").value;
-        let searchUserInput = document.getElementById("searchUserInput");
-        let url = "https:/www.themealdb.com/api/json/v1/1/search.php?s=";
-
-        fetch(url + "big mac")
-            .then((response) => response.json())
-            .then((data) => {
-                let meal = data.meals[0];
-
-                console.log(meal);
-                console.log(meal.strMealThumb);
-                console.log(meal.strMeal);
-                console.log(meal.strArea);
-                console.log(meal.strInstructions);
-
-                let allIngredient = [];
-                let count = 1;
-
-                for (let i in meal) {
-                    let ingredient = "";
-                    let measure = "";
-
-                    if (i.startsWith("strIngredient") && meal[i]) {
-                        ingredient = meal[i];
-                        measure = meal[`strMeasure` + count++];
-
-                        allIngredient.push(`${measure} ${ingredient}`)
-                    }
-                }
-
-                console.log(allIngredient);
-
-
-                result.innerHTML = `
-                <img class="w-[50%] rounded-md mx-auto mt-5" src=${meal.strMealThumb}>
-
-                <div class="text-center bg-yellow-400 relative rounded-md mt-[-4em] py-3">
-                    <h2 class="text-[24px] font-medium">${meal.strMeal}</h2>
-                    <h2>${meal.strArea}</h2>
-                </div>
-
-                <div></div>
-
-                <div id="recipe" class="absolute bg-white left-0 top-0 w-full rounded-md hidden">
-                <button id="return" class="px-3 py-1 top-[20px] left-[90%] bg-yellow-400 relative rounded-sm">x</button>
-                <pre class="whitespace-pre-wrap break-word pt-10 px-8 font-medium">
-                    ${meal.strInstructions}
-                    </pre>
-                    
-                </div>
-                `
-
-            })
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
