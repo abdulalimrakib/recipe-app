@@ -10,13 +10,14 @@ searchUserInput.addEventListener("click", ()=>{
     let length = userInput.length;
     if(length === 0){
         result.innerHTML=`
-           <h3 class="font-bold mt-5 text-center">Youer input is empty</h3>
+           <h3 class="font-bold mt-5 text-center">Your input is empty</h3>
         `
     }
     else{
         fetch(url + userInput)
     .then((response) => response.json())
     .then((data) => {
+        console.log(data);
         let meal = data.meals[0];
 
         console.log(meal);
